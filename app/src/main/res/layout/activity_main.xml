@@ -9,16 +9,14 @@
     <!-- Container tengah untuk semua isi halaman -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/loginContainer"
-        android:layout_width="404dp"
-        android:layout_height="654dp"
+        android:layout_width="386dp"
+        android:layout_height="690dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <!-- Gambar Header -->
-
-        <!-- Judul -->
 
         <ImageView
             android:id="@+id/headerImage"
@@ -32,6 +30,8 @@
             app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Judul -->
 
         <TextView
             android:id="@+id/titleText"
@@ -116,36 +116,38 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/forgotPassword" />
 
-        <!-- Text Sign Up -->
-        <LinearLayout
-            android:id="@+id/signupContainer"
+        <!-- Tulisan "or" -->
+
+        <!-- Tombol Register -->
+        <TextView
+            android:id="@+id/orText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:orientation="horizontal"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="or"
+            android:textColor="#A47148"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/loginButton">
+            app:layout_constraintTop_toBottomOf="@id/loginButton" />
 
-            <TextView
-                android:id="@+id/tv_signup_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text="Don’t have an account?"
-                android:textColor="#5B3B2E"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tv_signup_click"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text=" Sign up"
-                android:textColor="#547254"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="#A47148"
+            android:fontFamily="@font/poppins_bold"
+            android:text="REGISTER"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/orText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
