@@ -5,6 +5,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,11 +23,30 @@ class MainActivity : AppCompatActivity() {
             val password = passwordEditText.text.toString().trim()
 
             if (username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Yuk isi dulu username dan password-nya!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Yuk isi dulu username dan password-nya!", Toast.LENGTH_SHORT)
+                    .show()
             } else {
-                // Nanti ganti bagian ini kalau sudah ada proses login
-                Toast.makeText(this, "Login berhasil! Selamat datang, $username", Toast.LENGTH_SHORT).show()
+                if (username == "ruby" && password == "1234") {
+                    Toast.makeText(
+                        this,
+                        "Login berhasil! Selamat datang, $username",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    // Intent pindah ke halaman home
+                    val intent = Intent(this, DashboardActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Username atau password salah, coba lagi ya!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
     }
 }
+
+
