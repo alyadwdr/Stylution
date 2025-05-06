@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="cream_base">#f9f5eb</color>
+    <color name="nav_active">#5c4033</color>   <!-- Warna item aktif (coklat) -->
+    <color name="nav_inactive">#9E9E9E</color> <!-- Warna item tidak aktif (abu-abu) -->
+    <color name="pink_primary">#FF4081</color>
+    <color name="pink_dark">#C60055</color>
+    <color name="pink_light">#FF79B0</color>
 </resources>

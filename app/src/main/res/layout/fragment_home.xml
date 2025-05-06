@@ -1,184 +1,299 @@
-<LinearLayout
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="#f9f5eb"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:scrollbars="vertical">
+    android:background="#f9f5eb"
+    android:fillViewport="true"
+    android:clipToPadding="false"
+    android:paddingBottom="60dp">
 
-    <!-- Header -->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical|space_between">
+        android:padding="16dp">
 
+        <!-- Header: Logo -->
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:src="@drawable/logo_horizontal" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/btn_notification"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/icon_bell"
-                android:layout_marginEnd="16dp"/>
-
-            <ImageView
-                android:id="@+id/btn_profile"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/icon_profile2" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- Weather Card -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/weather"
-            android:scaleType="fitXY" />
-
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:src="@drawable/sun_icon"
-            android:layout_margin="16dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/logo"
+            android:layout_width="144dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="7dp"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="30°C\nSunday, 4 May 2025"
-            android:textSize="14sp" />
+            android:adjustViewBounds="true"
+            android:contentDescription="Stylution logo"
+            android:src="@drawable/logo_horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Time to show off your summer style!"
-            android:textSize="14sp"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="90dp"
+        <!-- Header: Notification Icon -->
+        <ImageView
+            android:id="@+id/btn_notification"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/icon_bell"
+            android:contentDescription="Notifications"
+            app:layout_constraintEnd_toStartOf="@+id/btn_profile"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Header: Profile Icon -->
+        <ImageView
+            android:id="@+id/btn_profile"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/icon_profile2"
+            android:contentDescription="Profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Weather Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/weather_card"
+            android:layout_width="0dp"
+            android:layout_height="221dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/poppins_bold"
-            android:maxWidth="200dp"/>
-    </RelativeLayout>
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo">
 
-    <!-- Previous Outfits -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="space_between"
-        android:layout_marginTop="24dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
+                <ImageView
+                    android:id="@+id/weather_bg"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:contentDescription="Weather background"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/weather"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- Temperature text with fixed position -->
+
+                <!-- Day text with fixed position -->
+                <TextView
+                    android:id="@+id/tv_temperature"
+                    android:layout_width="75dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="30°C"
+                    android:textColor="#333333"
+                    android:textSize="30sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.781" />
+
+                <TextView
+                    android:id="@+id/tv_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Sunday,"
+                    android:textColor="#333333"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_temperature"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_temperature"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <!-- Date text with fixed position -->
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="4 May 2025"
+                    android:textColor="#333333"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_day"
+                    app:layout_constraintStart_toEndOf="@+id/tv_day"
+                    app:layout_constraintTop_toTopOf="@+id/tv_day"
+                    android:layout_marginStart="8dp" />
+
+                <!-- Weather message with fixed position -->
+                <TextView
+                    android:id="@+id/tv_weather_message"
+                    android:layout_width="108dp"
+                    android:layout_height="141dp"
+                    android:layout_marginEnd="28dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Time to show off your summer style!"
+                    android:textColor="#333333"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.65"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:layout_constraintWidth_percent="0.36" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Previous Outfits Header -->
         <TextView
-            android:text="Previous Outfits"
-            android:textSize="16sp"
-            android:fontFamily="@font/poppins_bold"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:id="@+id/btn_prev_outfit"
-            android:text=">"
-            android:textSize="16sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp">
-
-        <View
+            android:id="@+id/tv_previous_outfits"
             android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:background="#C9EBC9"
-            android:layout_marginEnd="8dp"/>
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:background="#C9EBC9"/>
-    </LinearLayout>
-
-    <!-- Recommendation Section -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="space_between"
-        android:layout_marginTop="24dp">
-
-        <TextView
-            android:text="Recommendation"
-            android:textSize="16sp"
-            android:fontFamily="@font/poppins_bold"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:id="@+id/btn_recommend"
-            android:text=">"
-            android:textSize="16sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Previous Outfits"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/iv_previous_outfits_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weather_card" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginBottom="8dp"
-                android:background="#C9EBC9"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginBottom="8dp"
-                android:background="#C9EBC9"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginBottom="8dp"
-                android:background="#C9EBC9"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginBottom="8dp"
-                android:background="#C9EBC9"/>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+        <ImageView
+            android:id="@+id/iv_previous_outfits_arrow"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:clickable="true"
+            android:contentDescription="Next"
+            android:focusable="true"
+            android:src="@drawable/icon_arrow"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_previous_outfits"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_previous_outfits" />
+
+        <!-- Previous Outfits Images -->
+        <ImageView
+            android:id="@+id/iv_outfit_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/outfits_box"
+            app:layout_constraintEnd_toStartOf="@+id/iv_outfit_2"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_previous_outfits" />
+
+        <ImageView
+            android:id="@+id/iv_outfit_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/outfits_box"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_outfit_1"
+            app:layout_constraintTop_toTopOf="@+id/iv_outfit_1" />
+
+        <!-- Recommendation Header -->
+        <TextView
+            android:id="@+id/tv_recommendation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Recommendation"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/iv_recommendation_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_outfit_1" />
+
+        <ImageView
+            android:id="@+id/iv_recommendation_arrow"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:clickable="true"
+            android:contentDescription="Next"
+            android:focusable="true"
+            android:src="@drawable/icon_arrow"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_recommendation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_recommendation" />
+
+        <!-- 6 Recommendation Images -->
+        <ImageView
+            android:id="@+id/iv_recommendation_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/outfits_box"
+            app:layout_constraintEnd_toStartOf="@+id/iv_recommendation_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_recommendation" />
+
+        <ImageView
+            android:id="@+id/iv_recommendation_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/outfits_box"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_recommendation_1"
+            app:layout_constraintTop_toTopOf="@+id/iv_recommendation_1" />
+
+        <ImageView
+            android:id="@+id/iv_recommendation_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/outfits_box"
+            app:layout_constraintEnd_toStartOf="@+id/iv_recommendation_4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_recommendation_1" />
+
+        <ImageView
+            android:id="@+id/iv_recommendation_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/outfits_box"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_recommendation_3"
+            app:layout_constraintTop_toTopOf="@+id/iv_recommendation_3" />
+
+        <ImageView
+            android:id="@+id/iv_recommendation_5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/outfits_box"
+            app:layout_constraintEnd_toStartOf="@+id/iv_recommendation_6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_recommendation_3" />
+
+        <ImageView
+            android:id="@+id/iv_recommendation_6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/outfits_box"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_recommendation_5"
+            app:layout_constraintTop_toTopOf="@+id/iv_recommendation_5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
