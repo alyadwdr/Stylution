@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Stylution</string>
+    <string-array name="colors_array">
+        <item>All Colors</item>
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Green</item>
+    </string-array>
+
+    <string-array name="style_array">
+        <item>All Styles</item>
+        <item>Casual</item>
+        <item>Formal</item>
+        <item>Sporty</item>
+    </string-array>
+
 </resources>

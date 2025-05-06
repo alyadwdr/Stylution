@@ -8,4 +8,7 @@
     <color name="pink_primary">#FF4081</color>
     <color name="pink_dark">#C60055</color>
     <color name="pink_light">#FF79B0</color>
+    <color name="pink">#FF9999</color>
+    <color name="gray">#666666</color>
+
 </resources>
