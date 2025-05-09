@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#FFF5E6"> <!-- Cream background color -->
+    android:background="#F9F5EB"
+    android:paddingBottom="60dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_margin="18dp"
+        android:fitsSystemWindows="true">
 
         <!-- Title & Flower Chain -->
         <TextView
@@ -34,7 +37,7 @@
             app:layout_constraintStart_toEndOf="@id/tv_closets"
             app:layout_constraintTop_toTopOf="@id/tv_closets" />
 
-        <!-- Tabs with proper spacing and active indicator -->
+        <!-- Tabs -->
         <LinearLayout
             android:id="@+id/tab_container"
             android:layout_width="0dp"
@@ -46,6 +49,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
+            <!-- Tab: All -->
             <LinearLayout
                 android:id="@+id/tab_all_container"
                 android:layout_width="0dp"
@@ -71,6 +75,7 @@
                     android:background="#FF9999" />
             </LinearLayout>
 
+            <!-- Tab: Tops -->
             <LinearLayout
                 android:id="@+id/tab_tops_container"
                 android:layout_width="0dp"
@@ -95,6 +100,7 @@
                     android:background="@android:color/transparent" />
             </LinearLayout>
 
+            <!-- Tab: Bottoms -->
             <LinearLayout
                 android:id="@+id/tab_bottoms_container"
                 android:layout_width="0dp"
@@ -119,6 +125,7 @@
                     android:background="@android:color/transparent" />
             </LinearLayout>
 
+            <!-- Tab: Dresses -->
             <LinearLayout
                 android:id="@+id/tab_dresses_container"
                 android:layout_width="0dp"
@@ -143,6 +150,7 @@
                     android:background="@android:color/transparent" />
             </LinearLayout>
 
+            <!-- Tab: Outer -->
             <LinearLayout
                 android:id="@+id/tab_outer_container"
                 android:layout_width="0dp"
@@ -168,19 +176,18 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Sort By with pink backgrounds -->
+        <!-- Sort Options -->
         <TextView
             android:id="@+id/tv_sortby"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sort by:"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@+id/tab_container"
-            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/poppins_regular" />
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintTop_toBottomOf="@id/tab_container"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <!-- Color spinner with pink background -->
         <TextView
             android:id="@+id/tv_color"
             android:layout_width="82dp"
@@ -194,48 +201,46 @@
             android:paddingBottom="4dp"
             android:text="Color"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/tv_sortby"
             app:layout_constraintStart_toEndOf="@id/tv_sortby"
-            app:layout_constraintTop_toTopOf="@id/tv_sortby" />
+            app:layout_constraintTop_toTopOf="@id/tv_sortby"
+            app:layout_constraintBottom_toBottomOf="@id/tv_sortby" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/arrow_down_float"
+            android:layout_marginEnd="10dp"
             app:layout_constraintEnd_toEndOf="@id/tv_color"
             app:layout_constraintTop_toTopOf="@id/tv_color"
-            app:layout_constraintBottom_toBottomOf="@id/tv_color"
-            android:layout_marginEnd="10dp" />
+            app:layout_constraintBottom_toBottomOf="@id/tv_color" />
 
-        <!-- Style spinner with pink background -->
         <TextView
             android:id="@+id/tv_style"
             android:layout_width="82dp"
             android:layout_height="28dp"
-            android:text="Style"
-            android:textSize="14sp"
+            android:layout_marginStart="8dp"
             android:background="@drawable/pink_sortby"
             android:paddingStart="12dp"
-            android:paddingEnd="12dp"
             android:paddingTop="4dp"
+            android:paddingEnd="12dp"
             android:paddingBottom="4dp"
-            android:layout_marginStart="8dp"
+            android:text="Style"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"
             app:layout_constraintStart_toEndOf="@id/tv_color"
             app:layout_constraintTop_toTopOf="@id/tv_color"
-            app:layout_constraintBottom_toBottomOf="@id/tv_color"
-            android:fontFamily="@font/poppins_regular" />
+            app:layout_constraintBottom_toBottomOf="@id/tv_color" />
 
-        <!-- Outfit Boxes -->
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:src="@android:drawable/arrow_down_float"
-            app:layout_constraintBottom_toBottomOf="@id/tv_style"
             app:layout_constraintEnd_toEndOf="@id/tv_style"
             app:layout_constraintTop_toTopOf="@id/tv_style"
-            app:layout_constraintVertical_bias="0.444" />
+            app:layout_constraintBottom_toBottomOf="@id/tv_style" />
 
+        <!-- Outfit Grid -->
         <GridLayout
             android:id="@+id/grid_outfits"
             android:layout_width="0dp"
@@ -245,11 +250,11 @@
             android:alignmentMode="alignMargins"
             android:rowOrderPreserved="false"
             android:useDefaultMargins="true"
-            app:layout_constraintTop_toBottomOf="@+id/tv_sortby"
+            app:layout_constraintTop_toBottomOf="@id/tv_sortby"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-            <!-- 6 green boxes -->
+            <!-- Example Green Boxes -->
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -297,7 +302,24 @@
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:src="@drawable/outfits_box" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/outfits_box" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/outfits_box" />
+
         </GridLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

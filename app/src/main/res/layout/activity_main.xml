@@ -21,7 +21,7 @@
 
     <!-- Container isi login -->
 
-    <!-- Logo Bulat di Bawah Tengah -->
+    <!-- Logo di Bawah Tengah -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/loginContainer"
         android:layout_width="0dp"
